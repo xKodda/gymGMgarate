@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Dumbbell, Flame, Zap, Trophy, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useAudio } from "./AudioController";
 
@@ -45,6 +45,76 @@ const disciplines = [
   },
 ];
 
+function DisciplineCard({
+  item,
+  index,
+  onHover,
+}: {
+  item: (typeof disciplines)[0];
+  index: number;
+  onHover: () => void;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // SCROLL IMAGE SCALE: Zoom progresivo continuo vinculado al desplazamiento
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  // La imagen se contrae y asienta suavemente al centro del viewport
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.14, 1.0, 1.08]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [-18, 18]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      onMouseEnter={onHover}
+      className="group flex flex-col justify-between min-w-[84vw] sm:min-w-[360px] md:min-w-0 snap-center shrink-0 md:shrink"
+    >
+      {/* Visual Container with Continuous Scroll Zoom Parallax */}
+      <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#111317] border border-[#1C232B] group-hover:border-[#384352] transition-colors duration-400 mb-5">
+        <motion.div
+          style={{ scale: imageScale, y: imageY }}
+          className="absolute inset-0 w-full h-full will-change-transform"
+        >
+          <Image
+            src={item.image}
+            alt={item.title}
+            fill
+            sizes="(max-width: 768px) 85vw, 50vw"
+            className="object-cover"
+          />
+        </motion.div>
+
+        {/* Subtle dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-transparent opacity-60 pointer-events-none" />
+
+        {/* Corner Code Tag */}
+        <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0B0B0D]/80 backdrop-blur-md border border-[#1C232B] text-xs font-mono text-[#CBD5E1] z-10 pointer-events-none">
+          <span className="text-white font-bold">{item.code}</span>
+          <span className="text-[#64748B]">//</span>
+          <span className="uppercase text-[11px]">{item.category}</span>
+        </div>
+      </div>
+
+      {/* Typography with Breathing Room */}
+      <div>
+        <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-tight mb-2 group-hover:text-white transition-colors">
+          {item.title}
+        </h3>
+        <p className="text-sm text-[#94A3B8] leading-relaxed">
+          {item.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function DisciplinesSection({
   onOpenCheckout,
 }: {
@@ -80,7 +150,7 @@ export default function DisciplinesSection({
     <section id="disciplinas" className="py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Section Header: Minimalist & Restrained */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6">
           <div className="max-w-2xl">
             <motion.div
@@ -115,7 +185,7 @@ export default function DisciplinesSection({
             </motion.p>
           </div>
 
-          {/* Single subtle section link instead of 4 duplicate buttons */}
+          {/* Single subtle section link */}
           <button
             onClick={() => {
               playClick();
@@ -129,55 +199,20 @@ export default function DisciplinesSection({
           </button>
         </div>
 
-        {/* Disciplines: Clean Editorial Composition (No heavy boxes, No duplicate buttons, No checklist noise) */}
+        {/* Disciplines: Cards with Scroll Image Scale and Mobile Snap Gallery */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
           className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 gap-8 lg:gap-12 -mx-4 px-4 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
-          {disciplines.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                onMouseEnter={playHover}
-                className="group flex flex-col justify-between min-w-[84vw] sm:min-w-[360px] md:min-w-0 snap-center shrink-0 md:shrink"
-              >
-                {/* Pure Photographic Focus with Minimal Film Tag */}
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#111317] border border-[#1C232B] group-hover:border-[#384352] transition-colors duration-400 mb-5">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 768px) 85vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-104"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-transparent opacity-60" />
-
-                  {/* Corner Code Tag */}
-                  <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0B0B0D]/80 backdrop-blur-md border border-[#1C232B] text-xs font-mono text-[#CBD5E1]">
-                    <span className="text-white font-bold">{item.code}</span>
-                    <span className="text-[#64748B]">//</span>
-                    <span className="uppercase text-[11px]">{item.category}</span>
-                  </div>
-                </div>
-
-                {/* Typography with Breathing Room (No bullet clutter) */}
-                <div>
-                  <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-tight mb-2 group-hover:text-white transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+          {disciplines.map((item, index) => (
+            <DisciplineCard
+              key={item.id}
+              item={item}
+              index={index}
+              onHover={playHover}
+            />
+          ))}
         </div>
 
         {/* Mobile Pagination Indicator Dots */}
@@ -194,7 +229,7 @@ export default function DisciplinesSection({
           ))}
         </div>
 
-        {/* Editorial Footnote Banner: Unified Single CTA */}
+        {/* Editorial Footnote Banner */}
         <div className="mt-14 pt-8 border-t border-[#1C232B] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-[#8E9CAE]">
           <p>
             * Todos los programas incluyen inducción biomecánica y evaluación antropométrica inicial sin costo adicional.
