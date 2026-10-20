@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Dumbbell, Flame, Target, Trophy, ArrowRight, ChevronRight, Check } from "lucide-react";
 import { useAudio } from "./AudioController";
 
@@ -93,11 +93,45 @@ export default function FacilitiesShowcase() {
   const { playClick, playHover } = useAudio();
   const [activeTab, setActiveTab] = useState(0);
 
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRevealRef = useRef<HTMLDivElement>(null);
+
+  // SCROLL IMAGE REVEAL: Segundo y último efecto protagonista
+  // Vinculado al desplazamiento natural para un desvelado cinematográfico de apertura sin bloquear el scroll
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 85%", "center 45%"],
+  });
+
+  // Dynamic aperture mask (clip-path inset reveal)
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["inset(12% 8% 12% 8% round 28px)", "inset(0% 0% 0% 0% round 16px)"]
+  );
+
+  // Smooth counter-zoom: starts at 1.16 and settles at 1.0
+  const imageZoom = useTransform(scrollYProgress, [0, 1], [1.16, 1.0]);
+
+  // Subtle tonal contrast enhancement during reveal
+  const imageBrightness = useTransform(scrollYProgress, [0, 1], [0.8, 1.0]);
+
+  // Curtain veil fade out
+  const curtainOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [0.55, 0.15, 0]);
+
+  // Coordinated metadata entrance
+  const metaY = useTransform(scrollYProgress, [0, 1], [20, 0]);
+  const metaOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [0, 0.6, 1]);
+
   const activeZone = zones[activeTab];
   const Icon = activeZone.icon;
 
   return (
-    <section id="instalaciones" className="py-28 md:py-36 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
+    <section
+      ref={sectionRef}
+      id="instalaciones"
+      className="py-28 md:py-36 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B] overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header: TITULAR INTERMEDIO GRANDE (Hierarchical Anchor #2) */}
@@ -130,52 +164,82 @@ export default function FacilitiesShowcase() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg text-[#94A3B8] max-w-2xl leading-relaxed"
           >
-            850 m² distribuidos bajo principios de alto rendimiento en Puente Alto. Cada zona cuenta con iluminación focal de alto contraste, maquinaria oficial Hammer Strength y espacio calculado para entrenar con total libertad.
+            850 m² concebidos bajo estándares olímpicos en Puente Alto. Cada zona cuenta con iluminación focal de alto contraste, maquinaria oficial Hammer Strength y espacio calculado para entrenar con total libertad.
           </motion.p>
         </div>
 
-        {/* Editorial Composition: Predominant Photograph + Distributed Editorial Texts */}
+        {/* Editorial Composition: SCROLL IMAGE REVEAL + Distributed Editorial Texts */}
         <div className="grid lg:grid-cols-12 gap-8 xl:gap-14 items-start">
           
-          {/* Left Column (7 cols): The Predominant Photograph */}
+          {/* Left Column (7 cols): The Scroll Image Reveal Container */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-2xl overflow-hidden bg-[#111317] border border-[#1C232B] shadow-2xl aspect-[4/3] sm:aspect-[16/11]">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeZone.id}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={activeZone.image}
-                    alt={activeZone.title}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover"
-                  />
-                  {/* Subtle photographic vignette - no bright color glow, natural contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/20 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D]/40 via-transparent to-transparent" />
-                </motion.div>
-              </AnimatePresence>
+            
+            {/* Outer viewport frame with dynamic Scroll-Driven Aperture / Clip Reveal */}
+            <motion.div
+              ref={imageRevealRef}
+              style={{
+                clipPath,
+              }}
+              className="relative rounded-2xl overflow-hidden bg-[#111317] border border-[#1C232B] shadow-2xl aspect-[4/3] sm:aspect-[16/11] will-change-[clip-path,transform]"
+            >
+              {/* Dynamic counter-zoom and contrast layer linked to scroll */}
+              <motion.div
+                style={{
+                  scale: imageZoom,
+                  filter: imageBrightness ? `brightness(${imageBrightness.get()})` : "none",
+                }}
+                className="absolute inset-0 w-full h-full will-change-transform"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeZone.id}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={activeZone.image}
+                      alt={activeZone.title}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      className="object-cover"
+                    />
 
-              {/* Top Meta Bar */}
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-xs font-mono font-medium text-white">
+                    {/* Natural photographic vignette with deep athletic contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-[#0B0B0D]/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0D]/40 via-transparent to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
+
+              {/* Scroll Curtain Fade */}
+              <motion.div
+                style={{ opacity: curtainOpacity }}
+                className="absolute inset-0 bg-[#0B0B0D] pointer-events-none"
+              />
+
+              {/* Top Meta Bar - Revealed smoothly as aperture opens */}
+              <motion.div
+                style={{ y: metaY, opacity: metaOpacity }}
+                className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none"
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-xs font-mono font-medium text-white shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                   <span>ZONA {activeZone.code} / 04</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-xs font-mono uppercase tracking-wider text-[#94A3B8]">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-xs font-mono uppercase tracking-wider text-[#94A3B8] shadow-lg">
                   <span>{activeZone.category}</span>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Bottom Architectural Caption */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 p-4 rounded-xl bg-[#0B0B0D]/90 backdrop-blur-md border border-[#1C232B]">
+              {/* Bottom Architectural Caption - Revealed in sync */}
+              <motion.div
+                style={{ y: metaY, opacity: metaOpacity }}
+                className="absolute bottom-4 left-4 right-4 z-10 p-4 rounded-xl bg-[#0B0B0D]/90 backdrop-blur-md border border-[#1C232B] shadow-lg"
+              >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
                     <p className="text-xs font-mono text-[#8E9CAE] uppercase tracking-wider">
@@ -190,8 +254,8 @@ export default function FacilitiesShowcase() {
                     <span>/ 04</span>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Quick Thumbnail / Zone Pagination Bar */}
             <div className="grid grid-cols-4 gap-3 mt-4">
@@ -223,11 +287,10 @@ export default function FacilitiesShowcase() {
           {/* Right Column (5 cols): Distributed Editorial Texts & Technical Matrix */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
             
-            {/* Zone Selector Tabs */}
+            {/* Zone Selector Tabs with Discrete Hover Interactions */}
             <div className="space-y-2">
               {zones.map((zone, idx) => {
                 const isCurrent = activeTab === idx;
-                const ZoneIcon = zone.icon;
 
                 return (
                   <button
@@ -261,10 +324,10 @@ export default function FacilitiesShowcase() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeZone.id}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="rounded-2xl bg-[#111317] border border-[#1C232B] p-6 sm:p-8 space-y-6"
               >
                 <div>

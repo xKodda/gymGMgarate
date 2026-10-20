@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { Volume2, VolumeX, Menu, X, Dumbbell, ShieldCheck, ArrowUpRight, Flame } from "lucide-react";
 import { useAudio } from "./AudioController";
 
@@ -16,9 +16,6 @@ export default function Navbar({
   const { soundEnabled, toggleSound, playClick, playHover } = useAudio();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Scroll Progress indicator from motion.dev/docs/react-scroll-animations
-  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,12 +46,6 @@ export default function Navbar({
 
   return (
     <>
-      {/* Scroll Progress Bar at the very top of the window */}
-      <motion.div
-        style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#22D6F6] via-white to-[#22D6F6] origin-left z-50 shadow-[0_0_12px_rgba(34,214,246,0.8)]"
-      />
-
       <header className="fixed top-4 left-0 right-0 z-40 px-4 md:px-8 transition-all duration-300">
         <div
           className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${
