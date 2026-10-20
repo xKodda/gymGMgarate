@@ -70,9 +70,6 @@ export default function Navbar({
                   </span>
                   <span className="w-2 h-2 rounded-full bg-[#22D6F6] animate-pulse"></span>
                 </div>
-                <span className="text-[10px] tracking-widest uppercase font-mono text-[#B8C2CC] group-hover:text-[#22D6F6] transition-colors">
-                  ALTO RENDIMIENTO • PUENTE ALTO
-                </span>
               </div>
             </Link>
 
@@ -93,32 +90,6 @@ export default function Navbar({
 
             {/* Right Action Buttons */}
             <div className="flex items-center gap-2 md:gap-3">
-              {/* Audio Toggle */}
-              <button
-                onClick={() => {
-                  toggleSound();
-                }}
-                aria-label={soundEnabled ? "Silenciar efectos de sonido" : "Activar efectos de sonido"}
-                title={soundEnabled ? "Silenciar audio" : "Activar audio interactivo"}
-                className={`p-2 rounded-xl border transition-all cursor-pointer ${soundEnabled
-                  ? "border-[#22D6F6]/50 bg-[#22D6F6]/10 text-[#22D6F6] shadow-[0_0_12px_rgba(34,214,246,0.25)]"
-                  : "border-[#1C232B] bg-[#0B0B0D] text-[#B8C2CC] hover:text-white"
-                  }`}
-              >
-                {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
-              </button>
-
-              {/* Portal Alumnos */}
-              <button
-                onClick={() => {
-                  playClick();
-                  onOpenPortalDemo();
-                }}
-                className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#F5F7FA] hover:text-[#22D6F6] bg-[#0B0B0D] hover:bg-[#1C232B] border border-[#1C232B] rounded-xl transition-all cursor-pointer"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-[#22D6F6]" />
-                <span>Acceso Socios</span>
-              </button>
 
               {/* Inscribirme Online CTA */}
               <button
