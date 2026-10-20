@@ -35,7 +35,7 @@ export default function PlatformPreview({
   return (
     <section id="videoteca" className="py-24 md:py-32 px-4 md:px-8 bg-[#0E1014] relative border-t border-[#1C232B]">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Header: Contained & Architectural */}
         <div className="max-w-3xl mb-16 md:mb-20">
           <motion.div
@@ -45,8 +45,6 @@ export default function PlatformPreview({
             transition={{ duration: 0.5 }}
             className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4"
           >
-            <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-            <span>03 // ECOSISTEMA DIGITAL & ON-DEMAND</span>
           </motion.div>
 
           <motion.h2
@@ -72,7 +70,7 @@ export default function PlatformPreview({
 
         {/* Editorial Composition: Unique App Photography + Clean 3-Pillar Narrative */}
         <div className="grid lg:grid-cols-12 gap-10 xl:gap-16 items-center">
-          
+
           {/* Left Column (7 cols): Unique Smartphone App Image with Subtle Video Prompt */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

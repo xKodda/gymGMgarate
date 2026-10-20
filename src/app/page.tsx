@@ -15,6 +15,7 @@ import PricingSection from "@/components/PricingSection";
 import Footer from "@/components/Footer";
 import RegistrationModal from "@/components/RegistrationModal";
 import StudentPortalModal from "@/components/StudentPortalModal";
+import Preloader from "@/components/Preloader";
 
 export default function Home() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
@@ -30,6 +31,9 @@ export default function Home() {
 
   return (
     <AudioProvider>
+      {/* Brand Preloader with Official Logo and Motivational Typography */}
+      <Preloader />
+
       <SmoothScroll>
         <main className="min-h-screen bg-[#0B0B0D] text-[#F5F7FA] selection:bg-[#22D6F6] selection:text-[#0B0B0D] relative overflow-x-hidden">
           {/* Top Floating Glassmorphic Navbar with Motion Scroll Progress Bar */}

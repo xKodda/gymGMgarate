@@ -63,19 +63,9 @@ export default function ScheduleSection() {
   return (
     <section id="horarios" className="py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Header: Contained & Clean */}
         <div className="max-w-3xl mb-12 md:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-            <span>04 // HORARIOS Y RESERVAS EN TIEMPO REAL</span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -110,11 +100,10 @@ export default function ScheduleSection() {
                   setSelectedDay(d.key);
                 }}
                 onMouseEnter={playHover}
-                className={`px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
-                  isSelected
+                className={`px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${isSelected
                     ? "bg-white text-[#0B0B0D]"
                     : "text-[#8E9CAE] hover:text-white hover:bg-[#111317]"
-                }`}
+                  }`}
               >
                 <span>{d.label}</span>
                 <span className="hidden sm:inline font-normal lowercase ml-1">
@@ -126,65 +115,69 @@ export default function ScheduleSection() {
         </div>
 
         {/* Editorial Timetable List (No bulky card grid) */}
-        <div className="divide-y divide-[#1C232B] border-t border-[#1C232B]">
+        <div className="border-t border-[#1C232B]">
           <AnimatePresence mode="wait">
-            {filtered.map((item) => {
-              const isReserved = reservedIds.includes(item.id);
-              return (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group"
-                >
-                  {/* Left: Time & Class info */}
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 min-w-0">
-                    <span className="text-xs sm:text-sm font-mono font-bold text-white shrink-0">
-                      {item.time}
-                    </span>
+            <motion.div
+              key={selectedDay}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="divide-y divide-[#1C232B]"
+            >
+              {filtered.map((item) => {
+                const isReserved = reservedIds.includes(item.id);
+                return (
+                  <div
+                    key={item.id}
+                    className="py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+                  >
+                    {/* Left: Time & Class info */}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 min-w-0">
+                      <span className="text-xs sm:text-sm font-mono font-bold text-white shrink-0">
+                        {item.time}
+                      </span>
 
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2.5">
-                        <h3 className="text-base font-bold text-white tracking-tight truncate">
-                          {item.name}
-                        </h3>
-                        <span className="inline-flex text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#111317] border border-[#1C232B] text-[#94A3B8]">
-                          {item.type}
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2.5">
+                          <h3 className="text-base font-bold text-white tracking-tight truncate">
+                            {item.name}
+                          </h3>
+                          <span className="inline-flex text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#111317] border border-[#1C232B] text-[#94A3B8]">
+                            {item.type}
+                          </span>
+                        </div>
+                        <p className="text-xs text-[#8E9CAE] mt-0.5">
+                          {item.coach} • {item.room}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right: Availability & Action */}
+                    <div className="flex items-center justify-between md:justify-end gap-6 shrink-0">
+                      <div className="text-left md:text-right">
+                        <span className="block text-[11px] font-mono text-[#8E9CAE]">
+                          Disponibilidad
+                        </span>
+                        <span className="text-xs font-mono font-semibold text-emerald-400">
+                          {isReserved ? item.spots - 1 : item.spots} de {item.total} cupos
                         </span>
                       </div>
-                      <p className="text-xs text-[#8E9CAE] mt-0.5">
-                        {item.coach} • {item.room}
-                      </p>
+
+                      <button
+                        onClick={() => toggleReservation(item.id)}
+                        className={`px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${isReserved
+                            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                            : "bg-[#111317] hover:bg-white text-white hover:text-[#0B0B0D] border border-[#1C232B]"
+                          }`}
+                      >
+                        {isReserved ? "Cupo Reservado" : "Reservar"}
+                      </button>
                     </div>
                   </div>
-
-                  {/* Right: Availability & Action */}
-                  <div className="flex items-center justify-between md:justify-end gap-6 shrink-0">
-                    <div className="text-left md:text-right">
-                      <span className="block text-[11px] font-mono text-[#8E9CAE]">
-                        Disponibilidad
-                      </span>
-                      <span className="text-xs font-mono font-semibold text-emerald-400">
-                        {isReserved ? item.spots - 1 : item.spots} de {item.total} cupos
-                      </span>
-                    </div>
-
-                    <button
-                      onClick={() => toggleReservation(item.id)}
-                      className={`px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                        isReserved
-                          ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
-                          : "bg-[#111317] hover:bg-white text-white hover:text-[#0B0B0D] border border-[#1C232B]"
-                      }`}
-                    >
-                      {isReserved ? "Cupo Reservado" : "Reservar"}
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
+                );
+              })}
+            </motion.div>
           </AnimatePresence>
         </div>
 

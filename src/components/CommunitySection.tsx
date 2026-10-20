@@ -36,10 +36,10 @@ export default function CommunitySection() {
   return (
     <section className="py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B] overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Top Header & Visual */}
         <div className="grid lg:grid-cols-12 gap-10 xl:gap-14 items-center mb-16 md:mb-20">
-          
+
           {/* Left: Text & Rating */}
           <div className="lg:col-span-6">
             <motion.div
@@ -49,8 +49,6 @@ export default function CommunitySection() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4"
             >
-              <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-              <span>06 // CULTURA Y COMUNIDAD SPORT GM</span>
             </motion.div>
 
             <motion.h2

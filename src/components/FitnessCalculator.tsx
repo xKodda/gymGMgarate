@@ -70,13 +70,9 @@ export default function FitnessCalculator({
   return (
     <section id="calculadora" className="py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Header: Contained & Architectural */}
         <div className="max-w-3xl mb-14 md:mb-18">
-          <div className="inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-            <span>05 // DIAGNÓSTICO INTERACTIVO & BIOMETRÍA</span>
-          </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-white tracking-tight mb-4 font-display">
             CALCULADORA DE OBJETIVOS FITNESS
@@ -89,10 +85,10 @@ export default function FitnessCalculator({
 
         {/* Minimalist 2-Column Split (No heavy double-nested boxes) */}
         <div className="grid lg:grid-cols-12 gap-10 xl:gap-14 items-start">
-          
+
           {/* Controls Form (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
-            
+
             {/* 1. Género */}
             <div>
               <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#8E9CAE] mb-2.5">
@@ -109,11 +105,10 @@ export default function FitnessCalculator({
                       playClick();
                       setGender(g.id as typeof gender);
                     }}
-                    className={`py-2.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer border ${
-                      gender === g.id
-                        ? "bg-white text-[#0B0B0D] border-white"
-                        : "bg-[#111317] text-[#8E9CAE] border-[#1C232B] hover:text-white"
-                    }`}
+                    className={`py-2.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer border ${gender === g.id
+                      ? "bg-white text-[#0B0B0D] border-white"
+                      : "bg-[#111317] text-[#8E9CAE] border-[#1C232B] hover:text-white"
+                      }`}
                   >
                     {g.label}
                   </button>
@@ -142,11 +137,10 @@ export default function FitnessCalculator({
                         playClick();
                         setGoal(item.id as typeof goal);
                       }}
-                      className={`p-3 rounded-lg border text-center transition-all cursor-pointer flex flex-col items-center gap-1.5 ${
-                        isSel
-                          ? "bg-[#181C24] border-white/60 text-white"
-                          : "bg-[#111317] border-[#1C232B] text-[#8E9CAE] hover:text-white hover:border-[#2D3748]"
-                      }`}
+                      className={`p-3 rounded-lg border text-center transition-all cursor-pointer flex flex-col items-center gap-1.5 ${isSel
+                        ? "bg-[#181C24] border-white/60 text-white"
+                        : "bg-[#111317] border-[#1C232B] text-[#8E9CAE] hover:text-white hover:border-[#2D3748]"
+                        }`}
                     >
                       <Icon className="w-4 h-4 text-white" />
                       <span className="text-xs font-semibold leading-tight">{item.label}</span>
@@ -209,11 +203,10 @@ export default function FitnessCalculator({
                       playClick();
                       setExperience(lvl.id as typeof experience);
                     }}
-                    className={`py-2 px-1 text-center rounded-lg text-xs font-mono transition-all cursor-pointer border ${
-                      experience === lvl.id
-                        ? "bg-white text-[#0B0B0D] border-white font-bold"
-                        : "bg-[#111317] text-[#8E9CAE] border-[#1C232B] hover:text-white"
-                    }`}
+                    className={`py-2 px-1 text-center rounded-lg text-xs font-mono transition-all cursor-pointer border ${experience === lvl.id
+                      ? "bg-white text-[#0B0B0D] border-white font-bold"
+                      : "bg-[#111317] text-[#8E9CAE] border-[#1C232B] hover:text-white"
+                      }`}
                   >
                     {lvl.label}
                   </button>

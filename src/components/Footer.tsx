@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Dumbbell, MessageCircle, MapPin, Clock, Mail, Phone, ArrowUpRight, Sparkles, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { MessageCircle, MapPin, Clock, Mail, Phone, ArrowUpRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -79,8 +80,15 @@ export default function Footer({
           {/* Col 1: Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#22D6F6] flex items-center justify-center text-[#0B0B0D] shadow-[0_0_15px_rgba(34,214,246,0.4)]">
-                <Dumbbell className="w-5 h-5 font-bold" />
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#22D6F6]/40 shadow-[0_0_15px_rgba(34,214,246,0.25)] shrink-0 bg-[#111317] p-1 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/logo.jpg"
+                    alt="Sport GM Gym Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <span className="text-xl font-black tracking-wider text-white font-display">
                 SPORT <span className="text-[#22D6F6]">GM</span>

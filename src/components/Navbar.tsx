@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Volume2, VolumeX, Menu, X, Dumbbell, ShieldCheck, ArrowUpRight, Flame } from "lucide-react";
+import { Volume2, VolumeX, Menu, X, ShieldCheck, ArrowUpRight, Flame } from "lucide-react";
 import { useAudio } from "./AudioController";
 
 export default function Navbar({
@@ -60,8 +61,16 @@ export default function Navbar({
               onClick={() => playClick()}
               className="flex items-center gap-3 group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#22D6F6] to-[#0d8ca3] flex items-center justify-center text-[#0B0B0D] shadow-[0_0_20px_rgba(34,214,246,0.35)] transition-transform group-hover:scale-105 duration-300">
-                <Dumbbell className="w-5 h-5 font-bold" />
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#22D6F6]/40 shadow-[0_0_20px_rgba(34,214,246,0.25)] transition-transform group-hover:scale-105 duration-300 shrink-0 bg-[#111317] p-1 flex items-center justify-center">
+                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/logo.jpg"
+                    alt="Sport GM Gym Logo"
+                    fill
+                    priority
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">

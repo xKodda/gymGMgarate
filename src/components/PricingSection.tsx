@@ -89,10 +89,6 @@ export default function PricingSection({
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header: Contained Headline Size */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4">
-            <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-            <span>07 // MEMBRESÍAS & PASES DIGITALES</span>
-          </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-white tracking-tight mb-4 font-display">
             ELIGE TU NIVEL DE COMPROMISO
@@ -109,20 +105,18 @@ export default function PricingSection({
             <div
               key={idx}
               onMouseEnter={playHover}
-              className={`rounded-2xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${
-                plan.highlight
+              className={`rounded-2xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${plan.highlight
                   ? "bg-[#141820] border-2 border-[#22D6F6] shadow-xl md:-translate-y-2"
                   : "bg-[#0B0B0D] border border-[#1C232B] hover:border-[#2D3748]"
-              }`}
+                }`}
             >
               {/* Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span
-                  className={`text-[11px] font-mono font-bold px-3 py-1 rounded-full ${
-                    plan.highlight
+                  className={`text-[11px] font-mono font-bold px-3 py-1 rounded-full ${plan.highlight
                       ? "bg-[#22D6F6] text-[#0B0B0D]"
                       : "bg-[#111317] text-[#8E9CAE] border border-[#1C232B]"
-                  }`}
+                    }`}
                 >
                   {plan.badge}
                 </span>
@@ -143,11 +137,10 @@ export default function PricingSection({
                 <div className="space-y-3 mb-8">
                   {plan.features.map((feat, fIdx) => (
                     <div key={fIdx} className="flex items-start gap-2.5 text-xs text-[#CBD5E1]">
-                      <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                        plan.highlight
+                      <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${plan.highlight
                           ? "bg-[#22D6F6]/20 text-[#22D6F6]"
                           : "bg-[#1C232B] text-[#8E9CAE]"
-                      }`}>
+                        }`}>
                         <Check className="w-2.5 h-2.5" />
                       </div>
                       <span>{feat}</span>
@@ -162,11 +155,10 @@ export default function PricingSection({
                   playClick();
                   onOpenCheckout(plan.name, plan.price);
                 }}
-                className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${
-                  plan.highlight
+                className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${plan.highlight
                     ? "bg-[#22D6F6] hover:bg-[#0fbddb] text-[#0B0B0D] shadow-[0_0_20px_rgba(34,214,246,0.35)] hover:scale-[1.01]"
                     : "bg-[#111317] hover:bg-[#1E232B] text-white border border-[#1C232B] hover:border-[#384352]"
-                }`}
+                  }`}
               >
                 <span>{plan.cta}</span>
                 <ArrowRight className="w-4 h-4" />
