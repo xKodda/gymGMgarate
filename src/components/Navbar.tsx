@@ -48,11 +48,10 @@ export default function Navbar({
     <>
       <header className="fixed top-4 left-0 right-0 z-40 px-4 md:px-8 transition-all duration-300">
         <div
-          className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${
-            scrolled
-              ? "bg-[#111317]/90 backdrop-blur-xl border border-[#1C232B] shadow-[0_10px_35px_-10px_rgba(0,0,0,0.8)] py-3 px-5 md:px-7"
-              : "bg-[#111317]/60 backdrop-blur-md border border-[#1C232B]/60 py-4 px-5 md:px-7"
-          }`}
+          className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${scrolled
+            ? "bg-[#111317]/90 backdrop-blur-xl border border-[#1C232B] shadow-[0_10px_35px_-10px_rgba(0,0,0,0.8)] py-3 px-5 md:px-7"
+            : "bg-[#111317]/60 backdrop-blur-md border border-[#1C232B]/60 py-4 px-5 md:px-7"
+            }`}
         >
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
@@ -101,11 +100,10 @@ export default function Navbar({
                 }}
                 aria-label={soundEnabled ? "Silenciar efectos de sonido" : "Activar efectos de sonido"}
                 title={soundEnabled ? "Silenciar audio" : "Activar audio interactivo"}
-                className={`p-2 rounded-xl border transition-all cursor-pointer ${
-                  soundEnabled
-                    ? "border-[#22D6F6]/50 bg-[#22D6F6]/10 text-[#22D6F6] shadow-[0_0_12px_rgba(34,214,246,0.25)]"
-                    : "border-[#1C232B] bg-[#0B0B0D] text-[#B8C2CC] hover:text-white"
-                }`}
+                className={`p-2 rounded-xl border transition-all cursor-pointer ${soundEnabled
+                  ? "border-[#22D6F6]/50 bg-[#22D6F6]/10 text-[#22D6F6] shadow-[0_0_12px_rgba(34,214,246,0.25)]"
+                  : "border-[#1C232B] bg-[#0B0B0D] text-[#B8C2CC] hover:text-white"
+                  }`}
               >
                 {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
               </button>
