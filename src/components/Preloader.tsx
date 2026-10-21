@@ -70,7 +70,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               initial={{ opacity: 0, scale: 0.85, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-[#22D6F6]/30 shadow-[0_0_35px_rgba(34,214,246,0.2)] mb-8 bg-[#111317] p-2 flex items-center justify-center"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-[#22D6F6]/30 shadow-[0_0_35px_rgba(34,214,246,0.2)] mb-6 sm:mb-8 bg-[#111317] p-2 flex items-center justify-center shrink-0"
             >
               <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
@@ -102,7 +102,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-wider text-white font-display mb-3 drop-shadow-sm"
+              className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-wide sm:tracking-wider text-white font-display mb-2 sm:mb-3 drop-shadow-sm px-2"
             >
               Prohibido rendirse
             </motion.h1>
@@ -112,7 +112,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="text-base sm:text-lg text-[#94A3B8] font-light italic tracking-wide mb-10"
+              className="text-sm sm:text-lg text-[#94A3B8] font-light italic tracking-wide mb-8 sm:mb-10 px-2"
             >
               Respira hondo y sigue
             </motion.p>
@@ -122,7 +122,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="w-52 sm:w-64 flex flex-col items-center gap-3"
+              className="w-48 sm:w-64 flex flex-col items-center gap-3 px-2"
             >
               {/* Fine hairline progress track */}
               <div className="w-full h-[3px] bg-[#1C232B] rounded-full overflow-hidden">

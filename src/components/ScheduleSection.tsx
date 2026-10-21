@@ -89,7 +89,7 @@ export default function ScheduleSection() {
         </div>
 
         {/* Minimalist Day Selector Tabs */}
-        <div className="flex items-center gap-2 border-b border-[#1C232B] pb-4 mb-8 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-center gap-2 border-b border-[#1C232B] pb-4 mb-8 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x -mx-4 px-4 sm:mx-0 sm:px-0">
           {days.map((d) => {
             const isSelected = selectedDay === d.key;
             return (
@@ -100,8 +100,8 @@ export default function ScheduleSection() {
                   setSelectedDay(d.key);
                 }}
                 onMouseEnter={playHover}
-                className={`px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer ${isSelected
-                    ? "bg-white text-[#0B0B0D]"
+                className={`px-3.5 sm:px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider rounded-lg transition-all cursor-pointer shrink-0 whitespace-nowrap ${isSelected
+                    ? "bg-white text-[#0B0B0D] shadow-[0_0_12px_rgba(255,255,255,0.3)]"
                     : "text-[#8E9CAE] hover:text-white hover:bg-[#111317]"
                   }`}
               >
@@ -130,20 +130,20 @@ export default function ScheduleSection() {
                 return (
                   <div
                     key={item.id}
-                    className="py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4 group"
+                    className="py-4 md:py-5 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 group"
                   >
                     {/* Left: Time & Class info */}
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-6 min-w-0">
                       <span className="text-xs sm:text-sm font-mono font-bold text-white shrink-0">
                         {item.time}
                       </span>
 
                       <div className="min-w-0">
-                        <div className="flex items-center gap-2.5">
-                          <h3 className="text-base font-bold text-white tracking-tight truncate">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
                             {item.name}
                           </h3>
-                          <span className="inline-flex text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#111317] border border-[#1C232B] text-[#94A3B8]">
+                          <span className="inline-flex text-[9px] sm:text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#111317] border border-[#1C232B] text-[#94A3B8] shrink-0">
                             {item.type}
                           </span>
                         </div>
@@ -154,9 +154,9 @@ export default function ScheduleSection() {
                     </div>
 
                     {/* Right: Availability & Action */}
-                    <div className="flex items-center justify-between md:justify-end gap-6 shrink-0">
+                    <div className="flex items-center justify-between md:justify-end gap-4 sm:gap-6 shrink-0 pt-2 sm:pt-0 border-t border-[#1C232B]/40 sm:border-t-0">
                       <div className="text-left md:text-right">
-                        <span className="block text-[11px] font-mono text-[#8E9CAE]">
+                        <span className="block text-[10px] sm:text-[11px] font-mono text-[#8E9CAE]">
                           Disponibilidad
                         </span>
                         <span className="text-xs font-mono font-semibold text-emerald-400">
@@ -166,7 +166,7 @@ export default function ScheduleSection() {
 
                       <button
                         onClick={() => toggleReservation(item.id)}
-                        className={`px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${isReserved
+                        className={`px-3.5 sm:px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${isReserved
                             ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
                             : "bg-[#111317] hover:bg-white text-white hover:text-[#0B0B0D] border border-[#1C232B]"
                           }`}

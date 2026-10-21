@@ -78,26 +78,26 @@ export default function RegistrationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-[#111317] border border-[#22D6F6]/50 rounded-3xl max-w-xl w-full max-h-[95vh] overflow-y-auto p-6 md:p-8 relative shadow-[0_0_50px_rgba(34,214,246,0.2)]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-[#111317] border border-[#22D6F6]/50 rounded-2xl sm:rounded-3xl max-w-xl w-full max-h-[92vh] sm:max-h-[95vh] overflow-y-auto p-4 sm:p-6 md:p-8 relative shadow-[0_0_50px_rgba(34,214,246,0.2)]">
         {/* Close Button */}
         <button
           onClick={() => {
             playClick();
             onClose();
           }}
-          className="absolute top-5 right-5 text-[#B8C2CC] hover:text-white p-2 rounded-full hover:bg-[#1C232B] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 text-[#B8C2CC] hover:text-white p-2.5 rounded-full hover:bg-[#1C232B] transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-8 h-8 rounded-lg bg-[#22D6F6] flex items-center justify-center text-[#0B0B0D] font-black text-xs">
+        <div className="flex items-center gap-2 mb-4 pr-8">
+          <div className="w-8 h-8 rounded-lg bg-[#22D6F6] flex items-center justify-center text-[#0B0B0D] font-black text-xs shrink-0">
             GM
           </div>
           <div>
-            <h3 className="font-black text-lg text-white uppercase tracking-wider font-display">
+            <h3 className="font-black text-base sm:text-lg text-white uppercase tracking-wider font-display">
               SPORT GM GYM
             </h3>
             <span className="text-[10px] text-[#22D6F6] font-mono">
@@ -107,41 +107,41 @@ export default function RegistrationModal({
         </div>
 
         {/* Step Indicator */}
-        <div className="flex items-center justify-between mb-6 px-2">
-          <div className="flex items-center gap-2">
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
+        <div className="flex items-center justify-between mb-6 px-1 sm:px-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${step >= 1 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
               1
             </span>
-            <span className={`text-xs ${step === 1 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Datos</span>
+            <span className={`text-[11px] sm:text-xs ${step === 1 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Datos</span>
           </div>
-          <div className="w-10 h-0.5 bg-[#1C232B]" />
-          <div className="flex items-center gap-2">
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step >= 2 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
+          <div className="w-6 sm:w-10 h-0.5 bg-[#1C232B]" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${step >= 2 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
               2
             </span>
-            <span className={`text-xs ${step === 2 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Pago</span>
+            <span className={`text-[11px] sm:text-xs ${step === 2 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Pago</span>
           </div>
-          <div className="w-10 h-0.5 bg-[#1C232B]" />
-          <div className="flex items-center gap-2">
-            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step === 3 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
+          <div className="w-6 sm:w-10 h-0.5 bg-[#1C232B]" />
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold ${step === 3 ? "bg-[#22D6F6] text-[#0B0B0D]" : "bg-[#1C232B] text-white"}`}>
               3
             </span>
-            <span className={`text-xs ${step === 3 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Pase QR</span>
+            <span className={`text-[11px] sm:text-xs ${step === 3 ? "text-white font-bold" : "text-[#B8C2CC]"}`}>Pase QR</span>
           </div>
         </div>
 
         {/* Selected Plan Summary Banner */}
-        <div className="p-3 rounded-2xl bg-[#0B0B0D] border border-[#1C232B] flex items-center justify-between mb-6">
+        <div className="p-3 rounded-2xl bg-[#0B0B0D] border border-[#1C232B] flex items-center justify-between mb-5 sm:mb-6">
           <div>
             <span className="text-[10px] text-[#B8C2CC] uppercase font-mono">Plan Seleccionado:</span>
-            <p className="text-sm font-bold text-white">{formData.plan}</p>
+            <p className="text-xs sm:text-sm font-bold text-white">{formData.plan}</p>
           </div>
-          <span className="text-base font-black text-[#22D6F6] font-mono">{formData.price}</span>
+          <span className="text-sm sm:text-base font-black text-[#22D6F6] font-mono">{formData.price}</span>
         </div>
 
         {/* STEP 1: PERSONAL DATA */}
         {step === 1 && (
-          <form onSubmit={handleSubmitStep1} className="space-y-4">
+          <form onSubmit={handleSubmitStep1} className="space-y-3.5 sm:space-y-4">
             <div>
               <label className="block text-xs font-medium text-[#B8C2CC] mb-1">
                 Nombre Completo:
@@ -151,7 +151,7 @@ export default function RegistrationModal({
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-white focus:outline-none transition-colors"
               />
             </div>
 
@@ -165,7 +165,7 @@ export default function RegistrationModal({
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                  className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-white focus:outline-none transition-colors"
                 />
               </div>
 
@@ -178,7 +178,7 @@ export default function RegistrationModal({
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                  className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-white focus:outline-none transition-colors"
                 />
               </div>
             </div>
@@ -192,7 +192,7 @@ export default function RegistrationModal({
                 required
                 value={formData.rut}
                 onChange={(e) => setFormData({ ...formData, rut: e.target.value })}
-                className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors"
+                className="w-full bg-[#0B0B0D] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3.5 sm:px-4 py-2.5 sm:py-3 text-base sm:text-sm text-white focus:outline-none transition-colors"
               />
             </div>
 

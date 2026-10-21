@@ -80,18 +80,18 @@ export default function PlatformPreview({
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-transparent opacity-70" />
 
             {/* Top Minimal Badge */}
-            <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-xs font-mono text-white">
-              <Smartphone className="w-3.5 h-3.5 text-[#8E9CAE]" />
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-[10px] sm:text-xs font-mono text-white">
+              <Smartphone className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#8E9CAE]" />
               <span>APP SOCIOS GM • 100% INCLUIDA</span>
             </div>
 
             {/* Bottom Caption Overlay */}
-            <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#0B0B0D]/90 backdrop-blur-md border border-[#1C232B] flex items-center justify-between">
-              <div>
-                <p className="text-xs font-mono text-[#8E9CAE] uppercase tracking-wider">
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-3 sm:p-4 rounded-xl bg-[#0B0B0D]/90 backdrop-blur-md border border-[#1C232B] flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-[10px] sm:text-xs font-mono text-[#8E9CAE] uppercase tracking-wider truncate">
                   MÓDULO ON-DEMAND ACTIVO
                 </p>
-                <p className="text-sm font-bold text-white uppercase tracking-tight">
+                <p className="text-xs sm:text-sm font-bold text-white uppercase tracking-tight truncate">
                   Técnica de Levantamiento y Registro de Marcas
                 </p>
               </div>
@@ -100,10 +100,10 @@ export default function PlatformPreview({
                   playClick();
                   setIsPlaying(!isPlaying);
                 }}
-                className="w-10 h-10 rounded-xl bg-white text-[#0B0B0D] hover:bg-[#22D6F6] transition-colors flex items-center justify-center cursor-pointer shadow-md flex-shrink-0"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white text-[#0B0B0D] hover:bg-[#22D6F6] transition-colors flex items-center justify-center cursor-pointer shadow-md flex-shrink-0"
                 aria-label="Ver demostración"
               >
-                <Play className="w-4 h-4 fill-current ml-0.5" />
+                <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
               </button>
             </div>
           </motion.div>

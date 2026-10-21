@@ -192,7 +192,7 @@ export default function DisciplinesSection({
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 gap-8 lg:gap-12 -mx-4 px-4 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 gap-6 sm:gap-8 lg:gap-12 -mx-4 px-4 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x"
         >
           {disciplines.map((item, index) => (
             <DisciplineCard
@@ -204,17 +204,21 @@ export default function DisciplinesSection({
           ))}
         </div>
 
-        {/* Mobile Pagination Indicator Dots */}
-        <div className="flex md:hidden items-center justify-center gap-2 mt-6">
+        {/* Mobile Pagination Indicator Dots with Accessible Tap Area */}
+        <div className="flex md:hidden items-center justify-center gap-1 mt-6">
           {disciplines.map((_, idx) => (
             <button
               key={idx}
               onClick={() => scrollToCard(idx)}
-              className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                activeMobileIdx === idx ? "w-8 bg-white" : "w-2 bg-[#2D3748]"
-              }`}
+              className="p-2 cursor-pointer flex items-center justify-center"
               aria-label={`Ver disciplina ${idx + 1}`}
-            />
+            >
+              <span
+                className={`h-1.5 rounded-full transition-all block ${
+                  activeMobileIdx === idx ? "w-8 bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" : "w-2 bg-[#2D3748]"
+                }`}
+              />
+            </button>
           ))}
         </div>
 

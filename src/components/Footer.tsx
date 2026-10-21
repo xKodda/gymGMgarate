@@ -195,11 +195,11 @@ export default function Footer({
                 value={emailSub}
                 onChange={(e) => setEmailSub(e.target.value)}
                 required
-                className="w-full bg-[#111317] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none"
+                className="w-full bg-[#111317] border border-[#1C232B] focus:border-[#22D6F6] rounded-xl px-3.5 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none"
               />
               <button
                 type="submit"
-                className="w-full py-2.5 bg-[#1C232B] hover:bg-[#22D6F6] text-white hover:text-[#0B0B0D] font-bold text-xs rounded-xl transition-all cursor-pointer"
+                className="w-full py-3 sm:py-2.5 bg-[#1C232B] hover:bg-[#22D6F6] text-white hover:text-[#0B0B0D] font-bold text-xs rounded-xl transition-all cursor-pointer"
               >
                 {subSuccess ? "¡Suscrito con éxito!" : "Suscribirme"}
               </button>

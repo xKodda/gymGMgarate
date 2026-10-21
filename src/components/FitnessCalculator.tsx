@@ -191,10 +191,10 @@ export default function FitnessCalculator({
               <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#8E9CAE] mb-2.5">
                 05. Nivel de Experiencia
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                 {[
                   { id: "principiante", label: "< 6 meses" },
-                  { id: "intermedio", label: "6 meses a 2 años" },
+                  { id: "intermedio", label: "6m - 2 años" },
                   { id: "avanzado", label: "> 2 años" },
                 ].map((lvl) => (
                   <button
@@ -203,7 +203,7 @@ export default function FitnessCalculator({
                       playClick();
                       setExperience(lvl.id as typeof experience);
                     }}
-                    className={`py-2 px-1 text-center rounded-lg text-xs font-mono transition-all cursor-pointer border ${experience === lvl.id
+                    className={`py-2 sm:py-2.5 px-1 text-center rounded-lg text-[11px] sm:text-xs font-mono transition-all cursor-pointer border leading-tight ${experience === lvl.id
                       ? "bg-white text-[#0B0B0D] border-white font-bold"
                       : "bg-[#111317] text-[#8E9CAE] border-[#1C232B] hover:text-white"
                       }`}
@@ -217,27 +217,27 @@ export default function FitnessCalculator({
           </div>
 
           {/* Results Display (5 cols) - Minimal & Typographic */}
-          <div className="lg:col-span-5 rounded-2xl bg-[#111317] border border-[#1C232B] p-6 md:p-8 space-y-6">
+          <div className="lg:col-span-5 rounded-2xl bg-[#111317] border border-[#1C232B] p-5 sm:p-6 md:p-8 space-y-5 sm:space-y-6">
             <div className="border-b border-[#1C232B] pb-4">
               <span className="text-xs font-mono uppercase tracking-wider text-[#8E9CAE]">
                 // RESULTADO ESTIMADO
               </span>
-              <h3 className="text-xl font-bold uppercase text-white tracking-tight mt-1">
+              <h3 className="text-lg sm:text-xl font-bold uppercase text-white tracking-tight mt-1">
                 Estrategia Sugerida
               </h3>
             </div>
 
             {/* Macros Metrics */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <span className="block text-xs font-mono text-[#8E9CAE] mb-1">Calorías Sugeridas</span>
-                <span className="text-3xl font-black text-white font-mono tracking-tight">
+                <span className="block text-[11px] sm:text-xs font-mono text-[#8E9CAE] mb-1">Calorías Sugeridas</span>
+                <span className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
                   {rec.calories} <span className="text-xs text-[#8E9CAE] font-normal">kcal</span>
                 </span>
               </div>
               <div>
-                <span className="block text-xs font-mono text-[#8E9CAE] mb-1">Proteína Diaria</span>
-                <span className="text-3xl font-black text-white font-mono tracking-tight">
+                <span className="block text-[11px] sm:text-xs font-mono text-[#8E9CAE] mb-1">Proteína Diaria</span>
+                <span className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
                   {rec.protein} <span className="text-xs text-[#8E9CAE] font-normal">g</span>
                 </span>
               </div>

@@ -24,12 +24,15 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: auto; /* Lenis handles smooth scrolling */
   background-color: #0B0B0D;
   color: #F5F7FA;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -37,6 +40,9 @@ body {
   color: #F5F7FA;
   font-family: var(--font-outfit), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  width: 100%;
+  min-width: 320px;
+  touch-action: manipulation;
 }
 
 /* Custom Scrollbar */

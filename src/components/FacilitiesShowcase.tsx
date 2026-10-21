@@ -275,39 +275,39 @@ export default function FacilitiesShowcase() {
         </div>
 
         {/* Bottom Architectural Metrics Strip */}
-        <div className="mt-16 pt-10 border-t border-[#1C232B] grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-[#1C232B] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
           <div>
-            <span className="block text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
+            <span className="block text-lg sm:text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
               850 M²
             </span>
-            <span className="block text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
+            <span className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
               Superficie Construida
             </span>
           </div>
 
           <div>
-            <span className="block text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
+            <span className="block text-lg sm:text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
               50 KG
             </span>
-            <span className="block text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
+            <span className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
               Mancuernas Máximas
             </span>
           </div>
 
           <div>
-            <span className="block text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
+            <span className="block text-lg sm:text-2xl md:text-3xl font-bold text-white font-mono tracking-tight break-words">
               HAMMER & ELEIKO
             </span>
-            <span className="block text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
+            <span className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
               Equipamiento Oficial
             </span>
           </div>
 
           <div>
-            <span className="block text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
+            <span className="block text-lg sm:text-2xl md:text-3xl font-bold text-white font-mono tracking-tight">
               100% QR
             </span>
-            <span className="block text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
+            <span className="block text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#8E9CAE] mt-1">
               Acceso Digital
             </span>
           </div>

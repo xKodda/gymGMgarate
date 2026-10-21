@@ -105,7 +105,7 @@ export default function PricingSection({
             <div
               key={idx}
               onMouseEnter={playHover}
-              className={`rounded-2xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${plan.highlight
+              className={`rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${plan.highlight
                   ? "bg-[#141820] border-2 border-[#22D6F6] shadow-xl md:-translate-y-2"
                   : "bg-[#0B0B0D] border border-[#1C232B] hover:border-[#2D3748]"
                 }`}
@@ -113,7 +113,7 @@ export default function PricingSection({
               {/* Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span
-                  className={`text-[11px] font-mono font-bold px-3 py-1 rounded-full ${plan.highlight
+                  className={`text-[10px] sm:text-[11px] font-mono font-bold px-2.5 sm:px-3 py-1 rounded-full ${plan.highlight
                       ? "bg-[#22D6F6] text-[#0B0B0D]"
                       : "bg-[#111317] text-[#8E9CAE] border border-[#1C232B]"
                     }`}
@@ -124,17 +124,17 @@ export default function PricingSection({
               </div>
 
               <div>
-                <h3 className="text-xl font-bold uppercase text-white mb-2">{plan.name}</h3>
-                <p className="text-xs text-[#94A3B8] mb-6 leading-relaxed">{plan.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold uppercase text-white mb-2">{plan.name}</h3>
+                <p className="text-xs text-[#94A3B8] mb-5 sm:mb-6 leading-relaxed">{plan.description}</p>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-[#1C232B]">
-                  <span className="text-4xl font-black text-white font-mono">{plan.price}</span>
+                <div className="mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-[#1C232B]">
+                  <span className="text-3xl sm:text-4xl font-black text-white font-mono">{plan.price}</span>
                   <span className="block text-xs text-[#8E9CAE] mt-1 font-mono">{plan.period}</span>
                 </div>
 
                 {/* Features List */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
                   {plan.features.map((feat, fIdx) => (
                     <div key={fIdx} className="flex items-start gap-2.5 text-xs text-[#CBD5E1]">
                       <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${plan.highlight
@@ -155,7 +155,7 @@ export default function PricingSection({
                   playClick();
                   onOpenCheckout(plan.name, plan.price);
                 }}
-                className={`w-full py-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${plan.highlight
+                className={`w-full py-3.5 sm:py-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer ${plan.highlight
                     ? "bg-[#22D6F6] hover:bg-[#0fbddb] text-[#0B0B0D] shadow-[0_0_20px_rgba(34,214,246,0.35)] hover:scale-[1.01]"
                     : "bg-[#111317] hover:bg-[#1E232B] text-white border border-[#1C232B] hover:border-[#384352]"
                   }`}

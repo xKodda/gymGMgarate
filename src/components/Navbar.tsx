@@ -47,11 +47,11 @@ export default function Navbar({
 
   return (
     <>
-      <header className="fixed top-4 left-0 right-0 z-40 px-4 md:px-8 transition-all duration-300">
+      <header className="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-4 md:px-8 transition-all duration-300">
         <div
           className={`max-w-7xl mx-auto rounded-2xl transition-all duration-300 ${scrolled
-            ? "bg-[#111317]/90 backdrop-blur-xl border border-[#1C232B] shadow-[0_10px_35px_-10px_rgba(0,0,0,0.8)] py-3 px-5 md:px-7"
-            : "bg-[#111317]/60 backdrop-blur-md border border-[#1C232B]/60 py-4 px-5 md:px-7"
+            ? "bg-[#111317]/95 backdrop-blur-xl border border-[#1C232B] shadow-[0_10px_35px_-10px_rgba(0,0,0,0.8)] py-2.5 sm:py-3 px-3.5 sm:px-5 md:px-7"
+            : "bg-[#111317]/75 backdrop-blur-md border border-[#1C232B]/60 py-3 sm:py-4 px-3.5 sm:px-5 md:px-7"
             }`}
         >
           <div className="flex items-center justify-between">
@@ -59,9 +59,9 @@ export default function Navbar({
             <Link
               href="/"
               onClick={() => playClick()}
-              className="flex items-center gap-3 group cursor-pointer"
+              className="flex items-center gap-2.5 sm:gap-3 group cursor-pointer shrink-0"
             >
-              <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#22D6F6]/40 shadow-[0_0_20px_rgba(34,214,246,0.25)] transition-transform group-hover:scale-105 duration-300 shrink-0 bg-[#111317] p-1 flex items-center justify-center">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden border border-[#22D6F6]/40 shadow-[0_0_20px_rgba(34,214,246,0.25)] transition-transform group-hover:scale-105 duration-300 shrink-0 bg-[#111317] p-1 flex items-center justify-center">
                 <div className="relative w-full h-full rounded-lg overflow-hidden">
                   <Image
                     src="/images/logo.jpg"
@@ -74,10 +74,10 @@ export default function Navbar({
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-lg md:text-xl font-black tracking-wider text-white font-display">
+                  <span className="text-base sm:text-lg md:text-xl font-black tracking-wider text-white font-display">
                     SPORT <span className="text-[#22D6F6]">GM</span>
                   </span>
-                  <span className="w-2 h-2 rounded-full bg-[#22D6F6] animate-pulse"></span>
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#22D6F6] animate-pulse"></span>
                 </div>
               </div>
             </Link>
@@ -100,27 +100,28 @@ export default function Navbar({
             {/* Right Action Buttons */}
             <div className="flex items-center gap-2 md:gap-3">
 
-              {/* Inscribirme Online CTA */}
+              {/* Inscribirme Online CTA (Responsive on mobile) */}
               <button
                 onClick={() => {
                   playClick();
                   onOpenCheckout("Plan Trimestral Pro", "$79.990");
                 }}
-                className="relative group overflow-hidden px-4 md:px-5 py-2 md:py-2.5 rounded-xl bg-[#22D6F6] text-[#0B0B0D] font-bold text-xs md:text-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,214,246,0.5)] hover:scale-[1.02] cursor-pointer flex items-center gap-1.5"
+                className="relative group overflow-hidden px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#22D6F6] text-[#0B0B0D] font-extrabold text-xs sm:text-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(34,214,246,0.5)] hover:scale-[1.02] cursor-pointer flex items-center gap-1.5 shrink-0"
               >
-                <Flame className="w-4 h-4 fill-current" />
-                <span>Inscribirme Online</span>
-                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current shrink-0" />
+                <span className="hidden sm:inline">Inscribirme Online</span>
+                <span className="sm:hidden">Inscribirme</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
               </button>
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Button (44px min tap area) */}
               <button
                 onClick={() => {
                   playClick();
                   setMobileMenuOpen(!mobileMenuOpen);
                 }}
                 aria-label={mobileMenuOpen ? "Cerrar menú móvil" : "Abrir menú móvil"}
-                className="lg:hidden p-2 rounded-xl bg-[#0B0B0D] border border-[#1C232B] text-[#B8C2CC] hover:text-white cursor-pointer"
+                className="lg:hidden p-2.5 rounded-xl bg-[#0B0B0D] border border-[#1C232B] text-[#B8C2CC] hover:text-white cursor-pointer shrink-0"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -129,28 +130,49 @@ export default function Navbar({
 
           {/* Mobile Dropdown Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden mt-4 pt-4 border-t border-[#1C232B] flex flex-col gap-2 animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="lg:hidden mt-3 pt-3 border-t border-[#1C232B] flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className="px-4 py-2.5 text-sm font-medium text-[#B8C2CC] hover:text-[#22D6F6] hover:bg-[#1C232B] rounded-xl transition-all"
+                  className="px-3.5 py-3 text-sm font-semibold text-[#CBD5E1] hover:text-[#22D6F6] hover:bg-[#1C232B] rounded-xl transition-all flex items-center justify-between"
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#64748B]" />
                 </a>
               ))}
-              <div className="pt-2 flex flex-col gap-2">
+              <div className="pt-2 flex flex-col gap-2 border-t border-[#1C232B]/60">
                 <button
                   onClick={() => {
                     playClick();
                     setMobileMenuOpen(false);
                     onOpenPortalDemo();
                   }}
-                  className="w-full py-2.5 px-4 text-xs font-semibold text-center text-[#F5F7FA] bg-[#0B0B0D] border border-[#1C232B] rounded-xl flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 text-xs font-bold text-center text-[#F5F7FA] bg-[#0B0B0D] border border-[#1C232B] hover:border-[#22D6F6]/50 rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
                 >
                   <ShieldCheck className="w-4 h-4 text-[#22D6F6]" />
                   <span>Acceso Socios & Credencial Digital</span>
+                </button>
+
+                {/* Sound Toggle inside mobile menu */}
+                <button
+                  onClick={() => {
+                    toggleSound();
+                  }}
+                  className="w-full py-2.5 px-4 text-xs font-mono text-center text-[#8E9CAE] hover:text-white bg-[#0B0B0D]/50 border border-[#1C232B] rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                >
+                  {soundEnabled ? (
+                    <>
+                      <Volume2 className="w-3.5 h-3.5 text-[#22D6F6]" />
+                      <span>Efectos de Sonido: Activados</span>
+                    </>
+                  ) : (
+                    <>
+                      <VolumeX className="w-3.5 h-3.5" />
+                      <span>Efectos de Sonido: Silenciados</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>

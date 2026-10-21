@@ -71,7 +71,7 @@ export default function ScrollZoomHero({
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.94] mb-6 font-display max-w-5xl"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[1.02] sm:leading-[0.94] mb-5 sm:mb-6 font-display max-w-5xl px-1 break-words"
         >
           LA DISCIPLINA SE CONVIERTE EN{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#22D6F6] to-[#0fbddb]">
@@ -84,7 +84,7 @@ export default function ScrollZoomHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-3xl leading-relaxed mb-8 md:mb-10 font-normal"
+          className="text-sm sm:text-lg md:text-xl text-[#94A3B8] max-w-3xl leading-relaxed mb-8 md:mb-10 font-normal px-2"
         >
           Centro de entrenamiento de alto calibre en Puente Alto. Musculación pesada, CrossFit, entrenamiento funcional y pases con acceso 100% digital.
         </motion.p>
@@ -94,7 +94,7 @@ export default function ScrollZoomHero({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-14 md:mb-16"
+          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-12 sm:mb-16 px-2 sm:px-0"
         >
           <button
             onClick={() => {
@@ -102,7 +102,7 @@ export default function ScrollZoomHero({
               onOpenCheckout("Plan Trimestral Pro", "$79.990");
             }}
             onMouseEnter={playHover}
-            className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#22D6F6] hover:bg-[#0fbddb] text-[#0B0B0D] font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,214,246,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#22D6F6] hover:bg-[#0fbddb] text-[#0B0B0D] font-extrabold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,214,246,0.4)] transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             <Flame className="w-4 h-4 fill-current" />
             <span>Inscribirme Online</span>
@@ -112,7 +112,7 @@ export default function ScrollZoomHero({
           <button
             onClick={scrollToNext}
             onMouseEnter={playHover}
-            className="w-full sm:w-auto px-7 py-4 rounded-xl bg-[#111317]/80 hover:bg-[#1C232B] text-white border border-[#1C232B] hover:border-[#384352] font-bold text-xs uppercase tracking-wider backdrop-blur-md flex items-center justify-center gap-2 transition-all cursor-pointer"
+            className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl bg-[#111317]/80 hover:bg-[#1C232B] text-white border border-[#1C232B] hover:border-[#384352] font-bold text-xs sm:text-sm uppercase tracking-wider backdrop-blur-md flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
             <span>Explorar Instalaciones & Clases</span>
             <ArrowDown className="w-4 h-4 text-[#8E9CAE]" />
@@ -124,40 +124,40 @@ export default function ScrollZoomHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl w-full pt-8 border-t border-[#1C232B] text-center"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-8 max-w-4xl w-full pt-6 sm:pt-8 border-t border-[#1C232B] text-center"
         >
-          <div className="p-2">
-            <span className="block text-2xl sm:text-3xl font-black text-white font-mono">
+          <div className="p-1 sm:p-2">
+            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
               +1,200
             </span>
-            <span className="text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
+            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
               Socios Activos
             </span>
           </div>
 
-          <div className="p-2">
-            <span className="block text-2xl sm:text-3xl font-black text-white font-mono">
+          <div className="p-1 sm:p-2">
+            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
               65+
             </span>
-            <span className="text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
-              Máquinas Hammer Strength
+            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
+              Máquinas Hammer
             </span>
           </div>
 
-          <div className="p-2">
-            <span className="block text-2xl sm:text-3xl font-black text-white font-mono">
+          <div className="p-1 sm:p-2">
+            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
               30+
             </span>
-            <span className="text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
+            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
               Clases Semanales
             </span>
           </div>
 
-          <div className="p-2">
-            <span className="block text-2xl sm:text-3xl font-black text-white font-mono">
+          <div className="p-1 sm:p-2">
+            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
               100%
             </span>
-            <span className="text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
+            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
               Acceso Digital QR
             </span>
           </div>
