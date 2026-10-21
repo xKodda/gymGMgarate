@@ -124,17 +124,6 @@ export default function FacilitiesShowcase() {
         
         {/* Section Header: TITULAR INTERMEDIO GRANDE */}
         <div className="max-w-3xl mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3 text-xs font-mono uppercase tracking-[0.25em] text-[#8E9CAE] mb-4"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#8E9CAE]" />
-            <span>02 // INFRAESTRUCTURA Y ZONAS</span>
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
