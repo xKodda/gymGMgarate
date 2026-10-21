@@ -56,7 +56,7 @@ function DisciplineCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  // SCROLL IMAGE SCALE: Zoom progresivo continuo vinculado al desplazamiento
+  // SCROLL IMAGE SCALE: Zoom progresivo continuo vinculado al desplazamiento vertical
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"],
@@ -64,20 +64,20 @@ function DisciplineCard({
 
   // La imagen se contrae y asienta suavemente al centro del viewport
   const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.14, 1.0, 1.08]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [-18, 18]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [-16, 16]);
 
   return (
     <motion.div
       ref={cardRef}
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       onMouseEnter={onHover}
-      className="group flex flex-col justify-between min-w-[84vw] sm:min-w-[360px] md:min-w-0 snap-center shrink-0 md:shrink"
+      className="group flex flex-col justify-between w-full"
     >
       {/* Visual Container with Continuous Scroll Zoom Parallax */}
-      <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#111317] border border-[#1C232B] group-hover:border-[#384352] transition-colors duration-400 mb-5">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[#111317] border border-[#1C232B] group-hover:border-[#384352] transition-colors duration-400 mb-4 sm:mb-5 shadow-lg">
         <motion.div
           style={{ scale: imageScale, y: imageY }}
           className="absolute inset-0 w-full h-full will-change-transform"
@@ -86,28 +86,28 @@ function DisciplineCard({
             src={item.image}
             alt={item.title}
             fill
-            sizes="(max-width: 768px) 85vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
         </motion.div>
 
         {/* Subtle dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-transparent opacity-60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0D] via-transparent to-transparent opacity-65 pointer-events-none" />
 
         {/* Corner Code Tag */}
-        <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0B0B0D]/80 backdrop-blur-md border border-[#1C232B] text-xs font-mono text-[#CBD5E1] z-10 pointer-events-none">
+        <div className="absolute top-3.5 left-3.5 sm:top-4 sm:left-4 inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#0B0B0D]/85 backdrop-blur-md border border-[#1C232B] text-[11px] sm:text-xs font-mono text-[#CBD5E1] z-10 pointer-events-none">
           <span className="text-white font-bold">{item.code}</span>
           <span className="text-[#64748B]">//</span>
-          <span className="uppercase text-[11px]">{item.category}</span>
+          <span className="uppercase text-[10px] sm:text-[11px] font-medium">{item.category}</span>
         </div>
       </div>
 
       {/* Typography with Breathing Room */}
       <div>
-        <h3 className="text-lg md:text-xl font-bold uppercase text-white tracking-tight mb-2 group-hover:text-white transition-colors">
+        <h3 className="text-lg sm:text-xl font-bold uppercase text-white tracking-tight mb-2 group-hover:text-[#22D6F6] transition-colors">
           {item.title}
         </h3>
-        <p className="text-sm text-[#94A3B8] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
           {item.description}
         </p>
       </div>
@@ -121,44 +121,20 @@ export default function DisciplinesSection({
   onOpenCheckout: (plan: string, price: string) => void;
 }) {
   const { playClick, playHover } = useAudio();
-  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
-    const scrollLeft = el.scrollLeft;
-    const cardWidth = el.offsetWidth * 0.85;
-    const newIdx = Math.round(scrollLeft / cardWidth);
-    if (newIdx !== activeMobileIdx && newIdx >= 0 && newIdx < disciplines.length) {
-      setActiveMobileIdx(newIdx);
-    }
-  };
-
-  const scrollToCard = (idx: number) => {
-    playClick();
-    if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.offsetWidth * 0.85;
-      scrollContainerRef.current.scrollTo({
-        left: idx * cardWidth,
-        behavior: "smooth",
-      });
-      setActiveMobileIdx(idx);
-    }
-  };
 
   return (
-    <section id="disciplinas" className="py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
+    <section id="disciplinas" className="py-16 sm:py-24 md:py-32 px-4 md:px-8 bg-[#0B0B0D] relative border-t border-[#1C232B]">
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-16 md:mb-20 gap-4 sm:gap-6">
           <div className="max-w-2xl">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-white tracking-tight font-display mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase text-white tracking-tight font-display mb-3 sm:mb-4"
             >
               METODOLOGÍAS DE ALTO RENDIMIENTO
             </motion.h2>
@@ -168,7 +144,7 @@ export default function DisciplinesSection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base text-[#94A3B8] leading-relaxed"
+              className="text-sm sm:text-base text-[#94A3B8] leading-relaxed"
             >
               Metodología contrastada, equipamiento de élite y periodización técnica adaptada a tus objetivos específicos en Puente Alto.
             </motion.p>
@@ -188,12 +164,8 @@ export default function DisciplinesSection({
           </button>
         </div>
 
-        {/* Disciplines: Cards with Scroll Image Scale and Mobile Snap Gallery */}
-        <div
-          ref={scrollContainerRef}
-          onScroll={handleScroll}
-          className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-4 md:pb-0 gap-6 sm:gap-8 lg:gap-12 -mx-4 px-4 md:mx-0 md:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x"
-        >
+        {/* Disciplines: Clean Responsive Grid (1 col on mobile, 2 cols on desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
           {disciplines.map((item, index) => (
             <DisciplineCard
               key={item.id}
@@ -204,26 +176,8 @@ export default function DisciplinesSection({
           ))}
         </div>
 
-        {/* Mobile Pagination Indicator Dots with Accessible Tap Area */}
-        <div className="flex md:hidden items-center justify-center gap-1 mt-6">
-          {disciplines.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollToCard(idx)}
-              className="p-2 cursor-pointer flex items-center justify-center"
-              aria-label={`Ver disciplina ${idx + 1}`}
-            >
-              <span
-                className={`h-1.5 rounded-full transition-all block ${
-                  activeMobileIdx === idx ? "w-8 bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]" : "w-2 bg-[#2D3748]"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-
         {/* Editorial Footnote Banner */}
-        <div className="mt-14 pt-8 border-t border-[#1C232B] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-[#8E9CAE]">
+        <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-[#1C232B] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-[#8E9CAE]">
           <p>
             * Todos los programas incluyen inducción biomecánica y evaluación antropométrica inicial sin costo adicional.
           </p>
@@ -232,10 +186,10 @@ export default function DisciplinesSection({
               playClick();
               onOpenCheckout("Plan Trimestral Pro", "$79.990");
             }}
-            className="md:hidden inline-flex items-center gap-2 text-white font-semibold uppercase tracking-wider cursor-pointer"
+            className="md:hidden inline-flex items-center gap-2 text-white font-semibold uppercase tracking-wider cursor-pointer hover:text-[#22D6F6] transition-colors"
           >
-            <span>Ver membresías</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>Ver membresías y pases</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#22D6F6]" />
           </button>
         </div>
 
