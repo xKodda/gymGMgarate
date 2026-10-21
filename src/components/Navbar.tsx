@@ -68,6 +68,7 @@ export default function Navbar({
                     alt="Sport GM Gym Logo"
                     fill
                     priority
+                    sizes="40px"
                     className="object-contain"
                   />
                 </div>

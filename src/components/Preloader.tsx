@@ -78,6 +78,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
                   alt="Sport GM Gym Logo"
                   fill
                   priority
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>

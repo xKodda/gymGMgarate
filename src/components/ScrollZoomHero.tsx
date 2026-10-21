@@ -47,7 +47,6 @@ export default function ScrollZoomHero({
           alt="Sport GM Gym Puente Alto - Centro de Alto Rendimiento"
           fill
           priority
-          quality={90}
           sizes="100vw"
           className="object-cover object-center"
         />
@@ -94,7 +93,7 @@ export default function ScrollZoomHero({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto mb-12 sm:mb-16 px-2 sm:px-0"
+          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto px-2 sm:px-0"
         >
           <button
             onClick={() => {
@@ -117,50 +116,6 @@ export default function ScrollZoomHero({
             <span>Explorar Instalaciones & Clases</span>
             <ArrowDown className="w-4 h-4 text-[#8E9CAE]" />
           </button>
-        </motion.div>
-
-        {/* Quick Stats Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-8 max-w-4xl w-full pt-6 sm:pt-8 border-t border-[#1C232B] text-center"
-        >
-          <div className="p-1 sm:p-2">
-            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
-              +1,200
-            </span>
-            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
-              Socios Activos
-            </span>
-          </div>
-
-          <div className="p-1 sm:p-2">
-            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
-              65+
-            </span>
-            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
-              Máquinas Hammer
-            </span>
-          </div>
-
-          <div className="p-1 sm:p-2">
-            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
-              30+
-            </span>
-            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
-              Clases Semanales
-            </span>
-          </div>
-
-          <div className="p-1 sm:p-2">
-            <span className="block text-xl sm:text-3xl font-black text-white font-mono">
-              100%
-            </span>
-            <span className="text-[10px] sm:text-xs text-[#8E9CAE] uppercase tracking-wider font-medium">
-              Acceso Digital QR
-            </span>
-          </div>
         </motion.div>
 
       </div>

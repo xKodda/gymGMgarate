@@ -86,6 +86,7 @@ export default function Footer({
                     src="/images/logo.jpg"
                     alt="Sport GM Gym Logo"
                     fill
+                    sizes="40px"
                     className="object-contain"
                   />
                 </div>
