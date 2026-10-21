@@ -8,27 +8,27 @@ import { useAudio } from "./AudioController";
 const scheduleData = [
   // Lunes
   { id: 1, day: "Lunes", time: "07:00 - 08:00", name: "Cross Training & WOD Matutino", type: "Cross Training", coach: "Coach Rodrigo", spots: 3, total: 16, room: "Box WOD" },
-  { id: 2, day: "Lunes", time: "09:30 - 10:30", name: "Entrenamiento Funcional Élite", type: "Funcional", coach: "Coach Camila", spots: 5, total: 20, room: "Pista Césped" },
-  { id: 3, day: "Lunes", time: "18:30 - 19:30", name: "Powerlifting & Cargas Máximas", type: "Fuerza Pura", coach: "Head Coach GM", spots: 1, total: 12, room: "Zona Pesada" },
-  { id: 4, day: "Lunes", time: "20:00 - 21:00", name: "HIIT Metabólico con Trineos", type: "Metabólico", coach: "Coach Matías", spots: 7, total: 20, room: "Pista Césped" },
+  { id: 2, day: "Lunes", time: "09:30 - 10:30", name: "Entrenamiento Funcional & Core", type: "Funcional", coach: "Coach Camila", spots: 5, total: 20, room: "Pista Césped" },
+  { id: 3, day: "Lunes", time: "18:30 - 19:30", name: "Fuerza & Musculación Guiada", type: "Fuerza", coach: "Coach GM", spots: 1, total: 12, room: "Zona Musculación" },
+  { id: 4, day: "Lunes", time: "20:00 - 21:00", name: "HIIT Quema Grasa & Cardio", type: "Cardio", coach: "Coach Matías", spots: 7, total: 20, room: "Pista Césped" },
 
   // Martes
-  { id: 5, day: "Martes", time: "07:30 - 08:30", name: "Movilidad Dinámica & Core Strength", type: "Funcional", coach: "Coach Camila", spots: 6, total: 15, room: "Sala Multiuso" },
-  { id: 6, day: "Martes", time: "18:00 - 19:00", name: "Hipertrofia Guiada Biomecánica", type: "Fuerza Pura", coach: "Head Coach GM", spots: 4, total: 18, room: "Zona Pesada" },
-  { id: 7, day: "Martes", time: "19:30 - 20:30", name: "Halterofilia & Técnica Olímpica", type: "Cross Training", coach: "Coach Rodrigo", spots: 2, total: 16, room: "Box WOD" },
+  { id: 5, day: "Martes", time: "07:30 - 08:30", name: "Movilidad Dinámica & Abdominales", type: "Funcional", coach: "Coach Camila", spots: 6, total: 15, room: "Sala Multiuso" },
+  { id: 6, day: "Martes", time: "18:00 - 19:00", name: "Hipertrofia: Brazos & Torso", type: "Fuerza", coach: "Coach GM", spots: 4, total: 18, room: "Zona Musculación" },
+  { id: 7, day: "Martes", time: "19:30 - 20:30", name: "Iniciación Técnica & Levantamiento", type: "Cross Training", coach: "Coach Rodrigo", spots: 2, total: 16, room: "Box WOD" },
 
   // Miércoles
   { id: 8, day: "Miércoles", time: "07:00 - 08:00", name: "Cross Training Conditioning", type: "Cross Training", coach: "Coach Rodrigo", spots: 4, total: 16, room: "Box WOD" },
-  { id: 9, day: "Miércoles", time: "18:30 - 19:30", name: "Metabólico con Cuerdas y Trineos", type: "Metabólico", coach: "Coach Camila", spots: 3, total: 20, room: "Pista Césped" },
-  { id: 10, day: "Miércoles", time: "20:00 - 21:00", name: "Boxeo Formativo & Resistencia", type: "Condición", coach: "Coach David", spots: 5, total: 14, room: "Ring & Sacos" },
+  { id: 9, day: "Miércoles", time: "18:30 - 19:30", name: "Funcional con Cuerdas y Trineos", type: "Funcional", coach: "Coach Camila", spots: 3, total: 20, room: "Pista Césped" },
+  { id: 10, day: "Miércoles", time: "20:00 - 21:00", name: "Boxeo Fitness & Resistencia", type: "Cardio", coach: "Coach David", spots: 5, total: 14, room: "Ring & Sacos" },
 
   // Jueves
-  { id: 11, day: "Jueves", time: "08:00 - 09:00", name: "Sentadilla & Cadena Posterior Pesada", type: "Fuerza Pura", coach: "Head Coach GM", spots: 5, total: 16, room: "Zona Pesada" },
-  { id: 12, day: "Jueves", time: "19:00 - 20:00", name: "Team WOD Resistencia", type: "Cross Training", coach: "Coach Rodrigo", spots: 2, total: 18, room: "Box WOD" },
+  { id: 11, day: "Jueves", time: "08:00 - 09:00", name: "Piernas & Glúteos (Fuerza Guiada)", type: "Fuerza", coach: "Coach GM", spots: 5, total: 16, room: "Zona Musculación" },
+  { id: 12, day: "Jueves", time: "19:00 - 20:00", name: "Team Training & Resistencia", type: "Cross Training", coach: "Coach Rodrigo", spots: 2, total: 18, room: "Box WOD" },
 
   // Viernes
-  { id: 13, day: "Viernes", time: "07:00 - 08:00", name: "Hero WOD de Resistencia", type: "Cross Training", coach: "Coach Rodrigo", spots: 6, total: 16, room: "Box WOD" },
-  { id: 14, day: "Viernes", time: "18:30 - 19:30", name: "Friday Heavy Barbell Club", type: "Fuerza Pura", coach: "Head Coach GM", spots: 3, total: 14, room: "Zona Pesada" },
+  { id: 13, day: "Viernes", time: "07:00 - 08:00", name: "Full Body WOD de Cierre", type: "Cross Training", coach: "Coach Rodrigo", spots: 6, total: 16, room: "Box WOD" },
+  { id: 14, day: "Viernes", time: "18:30 - 19:30", name: "Circuito de Fuerza & Peso Libre", type: "Fuerza", coach: "Coach GM", spots: 3, total: 14, room: "Zona Musculación" },
 
   // Sábado
   { id: 15, day: "Sábado", time: "10:00 - 11:30", name: "Super Clase Abierta de Comunidad", type: "Comunidad", coach: "Staff Completo", spots: 8, total: 30, room: "Sede Completa" },

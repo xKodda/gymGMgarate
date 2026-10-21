@@ -46,9 +46,9 @@ export default function FitnessCalculator({
     } else if (goal === "fuerza") {
       calories += 400;
       protein = Math.round(weight * 1.9);
-      planTitle = "Plan Anual VIP All-Access";
+      planTitle = "Plan Anual VIP Black";
       planPrice = "$269.990";
-      split = "Powerlifting / Levantamientos Pesados 3-5 repeticiones";
+      split = "Fuerza básica y peso libre (3 a 5 series)";
     } else {
       protein = Math.round(weight * 1.7);
       planTitle = "Plan Mensual Flex";

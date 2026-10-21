@@ -58,7 +58,7 @@ export default function Footer({
               ¿LISTO PARA FORJAR TU MEJOR VERSIÓN?
             </h3>
             <p className="text-sm text-[#94A3B8] max-w-xl">
-              Inscríbete hoy de forma 100% digital, obtén tu credencial QR y comienza a entrenar con la mejor maquinaria Hammer Strength de la zona sur.
+              Inscríbete hoy de forma 100% digital, obtén tu credencial QR y comienza a entrenar con equipamiento completo y el mejor ambiente de Puente Alto.
             </p>
           </div>
 
@@ -151,11 +151,6 @@ export default function Footer({
               <li>
                 <a href="#disciplinas" className="hover:text-[#22D6F6] transition-colors">
                   Disciplinas & Programas
-                </a>
-              </li>
-              <li>
-                <a href="#instalaciones" className="hover:text-[#22D6F6] transition-colors">
-                  Instalaciones & Maquinaria
                 </a>
               </li>
               <li>

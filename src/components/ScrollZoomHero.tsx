@@ -85,7 +85,7 @@ export default function ScrollZoomHero({
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-sm sm:text-lg md:text-xl text-[#94A3B8] max-w-3xl leading-relaxed mb-8 md:mb-10 font-normal px-2"
         >
-          Centro de entrenamiento de alto calibre en Puente Alto. Musculación pesada, CrossFit, entrenamiento funcional y pases con acceso 100% digital.
+          Tu gimnasio en Puente Alto. Musculación, máquinas guiadas, peso libre, cross training y pases con acceso 100% digital.
         </motion.p>
 
         {/* CTA Buttons */}

@@ -16,10 +16,10 @@ const testimonials = [
   },
   {
     name: "Nicolás Valenzuela",
-    role: "Socio Plan Trimestral • Powerlifting",
-    comment: "Poder entrenar con barras olímpicas calibradas y racks Hammer Strength sin esperar turno cambió por completo mi rendimiento. La comunidad y los coaches siempre atentos a la técnica.",
+    role: "Socio Plan Trimestral • Musculación",
+    comment: "Entrenar con máquinas completas y suficiente peso libre sin tener que hacer largas filas cambió mi rutina. El ambiente es súper motivador y los profes siempre atentos a resolver dudas.",
     rating: 5,
-    tag: "PR 210 kg Peso Muerto",
+    tag: "+8 kg Masa Muscular",
   },
   {
     name: "Felipe Soto",

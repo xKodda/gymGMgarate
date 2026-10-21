@@ -9,13 +9,13 @@ import { useAudio } from "./AudioController";
 const features = [
   {
     code: "01",
-    title: "Videoteca Biomecánica HD",
-    desc: "Demostraciones técnicas en alta definición con ángulos frontales y laterales para dominar la trayectoria perfecta en cada levantamiento.",
+    title: "Videoteca de Rutinas & Ejercicios",
+    desc: "Explicaciones claras y paso a paso de cada máquina y ejercicio para que entrenes con total seguridad y confianza desde el primer día.",
   },
   {
     code: "02",
-    title: "Registro de Cargas & 1RM",
-    desc: "Registra tus pesos reales, calcula tus porcentajes de intensidad y sigue tu sobrecarga progresiva semana a semana sin libretas de papel.",
+    title: "Seguimiento de Progreso & Rutinas",
+    desc: "Anota tus pesos, repeticiones y avances semana a semana de forma fácil desde tu celular para mantenerte siempre motivado.",
   },
   {
     code: "03",

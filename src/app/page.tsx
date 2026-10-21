@@ -6,7 +6,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import ScrollZoomHero from "@/components/ScrollZoomHero";
 import DisciplinesSection from "@/components/DisciplinesSection";
-import FacilitiesShowcase from "@/components/FacilitiesShowcase";
 import PlatformPreview from "@/components/PlatformPreview";
 import ScheduleSection from "@/components/ScheduleSection";
 import FitnessCalculator from "@/components/FitnessCalculator";
@@ -47,9 +46,6 @@ export default function Home() {
 
           {/* Disciplinas & Programas de Entrenamiento */}
           <DisciplinesSection onOpenCheckout={handleOpenCheckout} />
-
-          {/* Instalaciones de Élite & Equipamiento Hammer Strength */}
-          <FacilitiesShowcase />
 
           {/* Sport GM On-Demand: Videoteca & Rutinas Exclusivas para Socios */}
           <PlatformPreview onOpenCheckout={handleOpenCheckout} />

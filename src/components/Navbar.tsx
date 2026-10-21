@@ -28,7 +28,6 @@ export default function Navbar({
 
   const navLinks = [
     { name: "Disciplinas", href: "#disciplinas" },
-    { name: "Instalaciones", href: "#instalaciones" },
     { name: "On-Demand", href: "#videoteca" },
     { name: "Horarios", href: "#horarios" },
     { name: "Calculadora", href: "#calculadora" },

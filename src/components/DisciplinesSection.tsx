@@ -10,9 +10,9 @@ const disciplines = [
   {
     id: "musculacion",
     code: "01",
-    title: "Musculación & Biomecánica",
-    category: "Fuerza & Hipertrofia",
-    description: "Racks de potencia Hammer Strength, barras olímpicas calibradas y mancuernas sólidas hasta 50 kg para maximizar la tensión mecánica.",
+    title: "Musculación & Peso Libre",
+    category: "Fuerza & Acondicionamiento",
+    description: "Máquinas modernas de musculación guiada, zona completa de mancuernas, barras y bancos para entrenar a tu propio ritmo con total comodidad.",
     image: "/images/athlete_strength.jpg",
     icon: Dumbbell,
   },
@@ -38,8 +38,8 @@ const disciplines = [
     id: "comunidad",
     code: "04",
     title: "Comunidad & Desafíos",
-    category: "Cultura de Élite",
-    description: "Un ambiente sin egos ni distracciones. Entrena junto a atletas comprometidos, celebrando cada nuevo récord personal en equipo.",
+    category: "Ambiente & Motivación",
+    description: "Un ambiente cercano y motivador para entrenar todos los días. Compañeros que te apoyan y coaches de sala siempre listos para orientarte.",
     image: "/images/community.jpg",
     icon: Trophy,
   },
@@ -179,7 +179,7 @@ export default function DisciplinesSection({
         {/* Editorial Footnote Banner */}
         <div className="mt-10 sm:mt-14 pt-6 sm:pt-8 border-t border-[#1C232B] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono text-[#8E9CAE]">
           <p>
-            * Todos los programas incluyen inducción biomecánica y evaluación antropométrica inicial sin costo adicional.
+            * Todos los planes incluyen inducción de sala y rutina personalizada de bienvenida sin costo adicional.
           </p>
           <button
             onClick={() => {
